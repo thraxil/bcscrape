@@ -2,7 +2,6 @@
 package bcscrape
 
 import (
-	"fmt"
 	"net/url"
 	"strings"
 
@@ -142,15 +141,6 @@ func (a *AlbumPage) Fetch() {
 	c.Visit(a.URL)
 }
 
-func ExampleAlbumPage() {
-	a := NewAlbumPage("https://solstafir.bandcamp.com/album/berdreyminn")
-	a.Fetch()
-	fmt.Println(a.Title)
-	// Output: "Berdreyminn"
-	fmt.Println(a.Artist)
-	// Output: "Sólstafir"
-}
-
 // DetermineType takes a url and determines what type of page it refers to
 // and also returns a normalized URL (eg, an artist '/releases' page often
 // contains the data of the most recently released album page, so it normalizes
@@ -165,15 +155,4 @@ func DetermineType(url string) (string, string) {
 	p := NewPage(url)
 	p.Fetch()
 	return p.Type, p.NormativeURL
-}
-
-func ExampleDeterminePage() {
-	DetermineType("https://solstafir.bandcamp.com/album/berdreyminn")
-	// Output: "album", "https://solstafir.bandcamp.com/album/berdreyminn"
-
-	DetermineType("https://solstafir.bandcamp.com/releases")
-	// Output: "album", "https://solstafir.bandcamp.com/album/berdreyminn"
-
-	DetermineType("https://solstafir.bandcamp.com/")
-	// Output: "artist", "https://solstafir.bandcamp.com/"
 }
