@@ -16,17 +16,17 @@ func ExampleAlbumPage() {
 	// Sólstafir
 }
 
-func ExampleDeterminePage_album() {
+func ExampleDetermineType_album() {
 	fmt.Println(bcscrape.DetermineType("https://solstafir.bandcamp.com/album/berdreyminn"))
 	// Output: album https://solstafir.bandcamp.com/album/berdreyminn
 }
 
-func ExampleDeterminePage_releases() {
+func ExampleDetermineType_releases() {
 	fmt.Println(bcscrape.DetermineType("https://solstafir.bandcamp.com/releases"))
 	// Output: album https://solstafir.bandcamp.com/album/berdreyminn
 }
 
-func ExampleDeterminePage_artist() {
+func ExampleDetermineType_artist() {
 	fmt.Println(bcscrape.DetermineType("https://solstafir.bandcamp.com/"))
 	// Output: band https://solstafir.bandcamp.com
 }
